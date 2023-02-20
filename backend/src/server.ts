@@ -8,6 +8,7 @@ import pedidoRouter from "./routers/pedido.router";
 import tarjetaRouter from "./routers/tarjeta.router";
 import direccionRouter from "./routers/direccion.router";
 import { dbConnect } from "./configs/config";
+import path from "path";
 dbConnect();
 const app = express();
 
@@ -24,6 +25,12 @@ app.use("/api/users", userRouter);
 app.use("/api/pedidos", pedidoRouter);
 app.use("/api/tarjetas", tarjetaRouter);
 app.use("/api/direcciones", direccionRouter);
+
+app.use(express.static("public"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 const port = 5000;
 
 app.listen(port, () => {
