@@ -1,0 +1,35 @@
+<table>
+  <tr>
+    <td colspan="5">
+      <h3>Productos:</h3>
+    </td>
+  </tr>
+  <tr *ngFor="let producto of pedido.productos">
+    <td>
+      <a routerLink="/perfume/{{ producto.perfume.id }}">
+        <img [src]="producto.perfume.imageUrl" />
+      </a>
+    </td>
+    <td>
+      {{ producto.perfume.nombre }}
+    </td>
+    <td>
+      {{ producto.perfume.precio | currency : "EUR" }}
+    </td>
+    <td>
+      {{ producto.cantidad }}
+    </td>
+    <td>
+      {{ producto.precio | currency : "EUR" }}
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3"></td>
+    <td>
+      <strong> Total: </strong>
+    </td>
+    <td>
+      <strong>{{ pedido.precioTotal | currency : "EUR" }}</strong>
+    </td>
+  </tr>
+</table>

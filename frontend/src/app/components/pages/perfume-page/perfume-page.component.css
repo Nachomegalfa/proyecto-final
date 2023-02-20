@@ -1,0 +1,68 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 3rem;
+}
+
+.container > * {
+  min-width: 25rem;
+  max-width: 40rem;
+}
+
+img {
+  border-radius: 3rem;
+  flex: 1 0;
+  object-fit: cover;
+  height: 35rem;
+  margin: 1rem;
+}
+
+.details {
+  width: 100;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+  margin-left: 1rem;
+  color: black;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.masculina {
+  font-size: 2rem;
+}
+
+.price {
+  font-size: 1.8rem;
+  margin: 2rem 2rem 2rem 0;
+  color: #883c82;
+}
+
+.price::before {
+  content: "Precio: ";
+  color: darkgrey;
+}
+button {
+  color: white;
+  background-color: #b7569a;
+  border: none;
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 10rem;
+  outline: none;
+}
+
+button:hover {
+  background-color: #883c82;
+  cursor: pointer;
+}

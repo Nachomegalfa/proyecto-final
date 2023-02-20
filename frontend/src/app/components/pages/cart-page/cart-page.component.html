@@ -1,0 +1,56 @@
+<app-title title="Carrito" margin="1.5rem 0 0 2.5rem"></app-title>
+<app-not-found
+  [visible]="!cart || !cart.items.length"
+  notFoundMessage="El carrito está vacío"
+  resetLinkText="Volver a la página de compra"
+></app-not-found>
+<div *ngIf="cart && cart.items.length" class="container">
+  <ul>
+    <li *ngFor="let cartItem of cart.items">
+      <div>
+        <img
+          [src]="cartItem.perfume.imageUrl"
+          [alt]="cartItem.perfume.nombre"
+        />
+      </div>
+      <div>
+        <a routerLink="/perfume/{{ cartItem.perfume.id }}">
+          {{ cartItem.perfume.nombre }}
+        </a>
+      </div>
+      <div>
+        <select
+          #quantitySelect
+          [value]="cartItem.cantidad"
+          (change)="changeQuantity(quantitySelect.value, cartItem)"
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+      <div>
+        {{ cartItem.precio | currency : "EUR" }}
+      </div>
+      <div>
+        <button class="remove-button" (click)="removeFromCart(cartItem)">
+          Quitar
+        </button>
+      </div>
+    </li>
+  </ul>
+  <div class="checkout">
+    <div>
+      <div class="perfumes-count">{{ cart.totalCount }}</div>
+      <div class="total-price">{{ cart.totalPrice | currency : "EUR" }}</div>
+    </div>
+    <a routerLink="/checkout">Checkout</a>
+  </div>
+</div>

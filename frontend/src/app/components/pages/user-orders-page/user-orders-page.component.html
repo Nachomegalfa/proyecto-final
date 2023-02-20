@@ -1,0 +1,35 @@
+<app-title title="Tus pedidos"></app-title>
+<app-not-found
+  [visible]="!pedidos || !pedidos.length"
+  notFoundMessage="No hay pedidos"
+  resetLinkText="Volver a la página de compra"
+></app-not-found>
+<div *ngIf="pedidos && pedidos.length" class="container">
+  <ul>
+    <li>
+      <div><strong>Estado</strong></div>
+      <div><strong>Direccion</strong></div>
+      <div><strong>Detalles</strong></div>
+      <div><strong></strong></div>
+    </li>
+    <li *ngFor="let pedido of pedidos">
+      <div>
+        {{ pedido.estado }}
+      </div>
+      <div>
+        {{
+          pedido.direccion.calle +
+            ", " +
+            pedido.direccion.numero +
+            ", " +
+            pedido.direccion.piso +
+            pedido.direccion.letra
+        }}
+      </div>
+      <div>
+        <a routerLink="/detalle/{{ pedido.id }}">Detalle Pedido</a>
+      </div>
+      <div class="acciones" (click)="cancelarPedido(pedido.id)">Cancelar</div>
+    </li>
+  </ul>
+</div>

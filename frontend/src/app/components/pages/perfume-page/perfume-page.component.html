@@ -1,0 +1,26 @@
+<app-not-found
+  [visible]="!perfume"
+  notFoundMessage="El producto no existe"
+></app-not-found>
+<div class="container" *ngIf="perfume">
+  <img [src]="perfume.imageUrl" [alt]="perfume.nombre" />
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{ perfume.nombre }}
+      </span>
+      <span class="masculina">
+        {{ perfume.masculina ? "♂" : "♀" }}
+      </span>
+    </div>
+    <div class="details">
+      <span>{{ perfume.descripcion }}</span>
+    </div>
+    <div class="price">
+      <span>
+        {{ perfume.precio | currency : "EUR" }}
+      </span>
+    </div>
+    <button (click)="addToCart()" *ngIf="isAuth">Añadir al carrito</button>
+  </div>
+</div>

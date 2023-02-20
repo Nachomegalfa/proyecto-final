@@ -1,0 +1,13 @@
+<app-title
+  title="{{
+    pedido.direccion.calle +
+      ', ' +
+      pedido.direccion.numero +
+      ', ' +
+      pedido.direccion.piso +
+      pedido.direccion.letra
+  }}"
+></app-title>
+<div class="container">
+  <order-items-list [pedido]="pedido"></order-items-list>
+</div>

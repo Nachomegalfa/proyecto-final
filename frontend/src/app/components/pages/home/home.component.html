@@ -1,0 +1,20 @@
+<app-search></app-search>
+<app-not-found [visible]="!perfumes || !perfumes.length"></app-not-found>
+<ul>
+  <li *ngFor="let perfume of perfumes">
+    <a routerLink="/perfume/{{ perfume.id }}">
+      <img [src]="perfume.imageUrl" [alt]="perfume.nombre" />
+      <div class="content">
+        <div class="name">
+          {{ perfume.nombre }}
+        </div>
+        <span class="masculina"> {{ perfume.masculina ? "♂" : "♀" }} </span>
+        <div class="price">
+          <span>
+            {{ perfume.precio | currency : "EUR" }}
+          </span>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>

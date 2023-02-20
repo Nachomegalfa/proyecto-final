@@ -1,0 +1,94 @@
+<app-not-found [visible]="!isAuth"></app-not-found>
+<div class="container" (onload)="setValues()">
+  <div class="content" *ngIf="isAuth">
+    <app-title title="Pedido" fontSize="1.6rem"></app-title>
+    <form [formGroup]="checkoutForm">
+      <text-input
+        [control]="fc.calle"
+        label="Calle"
+        (click)="setValues()"
+      ></text-input>
+      <text-input
+        [control]="fc.numero"
+        label="Número"
+        type="number"
+      ></text-input>
+      <text-input [control]="fc.piso" label="Piso" type="number"></text-input>
+      <text-input
+        [control]="fc.letra"
+        label="Letra"
+        [maxLength]="1"
+      ></text-input>
+      <text-input
+        [control]="fc.codigoPostal"
+        label="Codigo Postal"
+      ></text-input>
+      <text-input [control]="fc.localidad" label="Localidad"></text-input>
+      <app-title title="Tarjeta:"></app-title>
+      <text-input
+        #numeroTarjeta
+        [control]="fc.numeroTarjeta"
+        label="Número de tarjeta"
+        max="9999999999999999"
+      ></text-input>
+      <label for="mesSelect">Mes</label>
+      <select
+        #mesSelect
+        [value]="mesCaducidad"
+        (change)="changeMesCaducidad(mesSelect.value)"
+        required
+        [ngStyle]="{ width: '20rem' }"
+      >
+        <option value="1">1 - ENE</option>
+        <option value="2">2 - FEB</option>
+        <option value="3">3 - MAR</option>
+        <option value="4">4 - ABR</option>
+        <option value="5">5 - MAY</option>
+        <option value="6">6 - JUN</option>
+        <option value="7">7 - JUL</option>
+        <option value="8">8 - AGO</option>
+        <option value="9">9 - SEP</option>
+        <option value="10">10 - OCT</option>
+        <option value="10">11 - NOV</option>
+        <option value="10">12 - DIC</option>
+      </select>
+      <text-input
+        [control]="fc.anoCaducidad"
+        label="Año"
+        type="number"
+        max="99"
+        [ngStyle]="{ width: '20rem', marginTop: '0.5rem' }"
+      ></text-input>
+      <text-input
+        [control]="fc.cvv"
+        label="CVV"
+        type="number"
+        max="999"
+        [ngStyle]="{ width: '20rem' }"
+      ></text-input>
+    </form>
+    <order-items-list [pedido]="pedido"></order-items-list>
+  </div>
+  <div class="buttons-container" *ngIf="isAuth">
+    <div class="buttons">
+      <button (click)="crearPedido()">Proceder al Pago</button>
+    </div>
+  </div>
+</div>
+
+<!-- <form [formGroup]="checkoutForm" (ngSubmit)="submit()">
+  <select [value]="pedido.direccion" *ngIf="hasDirecciones">
+    <option *ngFor="let direccion of user.direcciones" [value]="direccion">
+      {{
+        direccion.calle +
+          ", " +
+          direccion.numero +
+          ", " +
+          direccion.piso +
+          direccion.letra +
+          ", " +
+          direccion.localidad
+      }}
+    </option>
+  </select>
+</form> -->
