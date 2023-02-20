@@ -1,4 +1,6 @@
-const BASE_URL = 'http://localhost:5000';
+import { environment } from '../../../../../environments/environment';
+
+const BASE_URL = environment.production ? '' : 'http://localhost:5000';
 
 export const PERFUMES_URL = BASE_URL + '/api/perfumes';
 export const PERFUMES_BY_SEARCH_URL = PERFUMES_URL + '/search/';
