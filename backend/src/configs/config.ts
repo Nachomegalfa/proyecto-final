@@ -1,5 +1,6 @@
 import { connect, ConnectOptions } from "mongoose";
 
+//Método para conectarse a la BBDD de MongoDB
 export const dbConnect = () => {
   connect(process.env.MONGO_URI!, {
     useNewUrlParser: true,
