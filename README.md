@@ -8,6 +8,6 @@ Ejecuta el comando `git clone https://github.com/Nachomegalfa/proyecto-final.git
 
 Sigue las instrucciones de los `README.md` de cada parte del proyecto para ejecutar el programa.
 
-##Visita la página
+## Visita la página
 
 https://proyecto-final-ignaciogarcia.onrender.com/
