@@ -17,8 +17,6 @@ import { UserService } from './user.service';
   providedIn: 'root',
 })
 export class PedidoService {
-  private pedidoObservable!: Observable<Pedido>;
-
   constructor(
     private http: HttpClient,
     private toastrService: ToastrService,
@@ -26,15 +24,19 @@ export class PedidoService {
     private userService: UserService
   ) {}
 
+  //Método para devolver un pedido por su id
   getPedidoById(id: string) {
     return this.http.get<Pedido>(PEDIDO_BY_ID_URL + id);
   }
 
+  //Método para devolver los pedidos por el id del usuario
   getByUser(): Observable<Pedido[]> {
     return this.http.get<Pedido[]>(
       PEDIDO_BY_USER_URL + this.userService.currentUser.id
     );
   }
+
+  //Método para subir un pedido a la BBDD
   pushPedido(pedido: Pedido) {
     return this.http.post<Pedido>(PEDIDO_CREATE_URL, pedido).pipe(
       tap({
@@ -52,6 +54,7 @@ export class PedidoService {
     );
   }
 
+  //Método para eliminar un pedido a la BBDD
   deletePedido(id: string) {
     return this.http.delete<Pedido>(PEDIDO_DELETE_URL + id);
   }

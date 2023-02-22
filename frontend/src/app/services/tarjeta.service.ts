@@ -16,11 +16,13 @@ import { UserService } from './user.service';
 export class TarjetaService {
   constructor(private http: HttpClient, private userService: UserService) {}
 
+  //Método para subir una tarjeta a la BBDD
   pushTarjeta(tarjeta: ITarjetaCheckout): Observable<Tarjeta> {
     console.log('push tarjeta');
     return this.http.post<Tarjeta>(TARJETA_CREATE_URL, tarjeta).pipe();
   }
 
+  //Método para devolver las tarjeta de un usuario por su id
   findByUserId(): Observable<Tarjeta[]> {
     console.log(this.userService.currentUser.id);
     return this.http.get<Tarjeta[]>(

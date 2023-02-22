@@ -27,10 +27,12 @@ export class UserService {
     this.userObservable = this.userSubject.asObservable();
   }
 
+  //Método para devolver el usuario que ha iniciado sesión
   public get currentUser(): User {
     return this.userSubject.value;
   }
 
+  //Método para realizar le login
   login(userLogin: IUserLogin): Observable<User> {
     return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(
       tap({
@@ -49,6 +51,7 @@ export class UserService {
     );
   }
 
+  //Método para registrar un nuevo usuario
   register(userRegister: IUserRegister): Observable<User> {
     return this.http.post<User>(USER_REGISTER_URL, userRegister).pipe(
       tap({
@@ -67,16 +70,19 @@ export class UserService {
     );
   }
 
+  //Método para cerrar sesión
   logout() {
     this.userSubject.next(new User());
     localStorage.removeItem(USER_KEY);
     window.location.reload();
   }
 
+  //Método para actualizar el usuario del localstorage
   private setUserToLocalStorage(user: User) {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
+  //Método para recoger el usuario almacenado en el localstorage
   private getUserFromLocalStorage(): User {
     const userJson = localStorage.getItem(USER_KEY);
     if (userJson) {
