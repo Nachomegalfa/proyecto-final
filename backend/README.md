@@ -2,9 +2,9 @@
 
 ## Requisitos
 
--NodeJS version >= 18.12
--npm version >= 8.19
--Dentro de la carpeta del proyecto, ejecutar el comando `npm install` para instalar todas las dependencias del `package.json`.
+-NodeJS version >= 18.12  
+-npm version >= 8.19  
+-Dentro de la carpeta del proyecto, ejecutar el comando `npm install` para instalar todas las dependencias del `package.json`.  
 
 ## Instrucciones de ejecución
 
